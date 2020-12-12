@@ -44,7 +44,7 @@ from print_functions_for_lab_checks import *
 def main():
     # TODO: 1. Define start_time to measure total program runtime by
     # collecting start time
-    start_time = None
+    start_time = time.time()
     
     # TODO: 2. Define get_input_args() function to create & retrieve command
     # line arguments
