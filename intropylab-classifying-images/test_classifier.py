@@ -19,7 +19,8 @@ from classifier import classifier
 
 # Defines a dog test image from pet_images folder
 test_image="pet_images/Collie_03797.jpg"
-# test_image2="pet_images/Golden_retriever_05223.jpg"
+# extern picture of a German Shepherd dog
+test_image2="pet_images/unknown.jpg"
 
 # Defines a model architecture to be used for classification
 # NOTE: this function only works for model architectures: 
@@ -30,8 +31,8 @@ model = "vgg"
 # NOTE: image_classication is a text string - It contains mixed case(both lower
 # and upper case letter) image labels that can be separated by commas when a 
 # label has more than one word that can describe it.
-image_classification = classifier(test_image, model)
+image_classification = classifier(test_image2, model)
 
 # prints result from running classifier() function
-print("\nResults from test_classifier.py\nImage:", test_image, "using model:",
+print("\nResults from test_classifier.py\nImage:", test_image2, "using model:",
       model, "was classified as a:", image_classification)
