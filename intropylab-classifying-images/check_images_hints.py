@@ -44,8 +44,8 @@ from print_functions_for_lab_checks import *
 def main():
     # TODO: 1. Define start_time to measure total program runtime by
     # collecting start time
-    start_time = time.time()
-    
+    start_time = time()
+    sleep(1)
     # TODO: 2. Define get_input_args() function to create & retrieve command
     # line arguments
     in_arg = get_input_args()
@@ -77,13 +77,13 @@ def main():
 
     # TODO: 1. Define end_time to measure total program runtime
     # by collecting end time
-    end_time = None
+    end_time = time()
 
     # TODO: 1. Define tot_time to computes overall runtime in
     # seconds by replacing zero with a the mathematical calculation that 
     # computes overall runtime
     # The print statement prints Overall runtime in hh:mm:ss format
-    tot_time = 0
+    tot_time = end_time - start_time
     print("\n** Total Elapsed Runtime:",
           str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"
           +str(int((tot_time%3600)%60)) )
@@ -130,7 +130,16 @@ def get_input_args():
     # returns parsed argument collection
     return parser.parse_args()
 
-
+def letters_only(str):
+    clean_data = ''
+    split_list = str.split("_")
+    
+    for word in split_list:
+        if word.isalpha():
+            cdata += word.lower() + " " 
+            cdata.strip()
+    return clean_data
+    
 def get_pet_labels(image_dir):
     """
     Creates a dictionary of pet labels based upon the filenames of the image 
@@ -162,7 +171,7 @@ def get_pet_labels(image_dir):
        if in_files[idx][0] != ".":
            
            # Creates temporary label variable to hold pet label name extracted 
-           pet_label = ""
+           pet_label = letters_only(in_files[idx])
 
            # TODO: 3. BELOW REPLACE pass with CODE that will process each 
            #          filename in the in_files list to extract the dog breed 
@@ -170,7 +179,8 @@ def get_pet_labels(image_dir):
            #          accessed by in_files[idx]. Be certain to place the 
            #          extracted dog breed name in the variable pet_label 
            #          that's created as an empty string ABOVE
-           pass
+           
+           # solved directly in pet_labels 
 
            # If filename doesn't already exist in dictionary add it and it's
            # pet label - otherwise print an error message because indicates 
@@ -294,7 +304,6 @@ def classify_images(images_dir, petlabel_dic, model):
     return(results_dic)
 
 
-
 def adjust_results4_isadog(results_dic, dogsfile):
     """
     Adjusts the results dictionary to determine if classifier correctly 
@@ -406,7 +415,6 @@ def adjust_results4_isadog(results_dic, dogsfile):
             else:
                 pass
             
-
 
 def calculates_results_stats(results_dic):
     """
