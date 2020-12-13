@@ -136,8 +136,8 @@ def letters_only(str):
     
     for word in split_list:
         if word.isalpha():
-            cdata += word.lower() + " " 
-            cdata.strip()
+            clean_data += word.lower() + " " 
+            clean_data.strip()
     return clean_data
     
 def get_pet_labels(image_dir):
@@ -195,7 +195,6 @@ def get_pet_labels(image_dir):
     # returns dictionary of labels
     return(petlabels_dic)
 
-
 def classify_images(images_dir, petlabel_dic, model):
     """
     Creates classifier labels with classifier function, compares labels, and 
@@ -238,7 +237,7 @@ def classify_images(images_dir, petlabel_dic, model):
        #  Runs classifier function to classify the images classifier function 
        # inputs: path + filename  and  model, returns model_label 
        # as classifier label
-       model_label = ""
+       model_label = classifier(images_dir+key, model)
 
        # TODO: 4.b BELOW REPLACE pass with CODE to process the model_label to 
        #           convert all characters within model_label to lowercase 
@@ -248,7 +247,7 @@ def classify_images(images_dir, petlabel_dic, model):
        #
        # Processes the results so they can be compared with pet image labels
        # set labels to lowercase (lower) and stripping off whitespace(strip)
-       pass
+       model_label.lower().strip()
        
        # defines truth as pet image label and trys to find it using find() 
        # string function to find it within classifier label(model_label).
@@ -302,7 +301,6 @@ def classify_images(images_dir, petlabel_dic, model):
                
     # Return results dictionary
     return(results_dic)
-
 
 def adjust_results4_isadog(results_dic, dogsfile):
     """
@@ -415,7 +413,6 @@ def adjust_results4_isadog(results_dic, dogsfile):
             else:
                 pass
             
-
 def calculates_results_stats(results_dic):
     """
     Calculates statistics of the results of the run using classifier's model 
@@ -555,7 +552,6 @@ def calculates_results_stats(results_dic):
         
     # returns results_stast dictionary 
     return results_stats
-
 
 def print_results(results_dic, results_stats, model, 
                   print_incorrect_dogs = False, print_incorrect_breed = False):

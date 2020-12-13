@@ -20,7 +20,7 @@ from classifier import classifier
 # Defines a dog test image from pet_images folder
 test_image="pet_images/Collie_03797.jpg"
 # extern picture of a German Shepherd dog
-test_image2="pet_images/unknown.jpg"
+test_image2="pet_images/unknown_04.jpg"
 
 # Defines a model architecture to be used for classification
 # NOTE: this function only works for model architectures: 
